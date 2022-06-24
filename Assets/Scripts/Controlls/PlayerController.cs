@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
 {
+    // TODO 
+    // fix jumping problem with moving when in air
     [SerializeField] private float playerSpeed = 2.0f;
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
@@ -18,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private InputAction moveAction;
     private InputAction jumpAction; 
     private InputAction characterTurnAction;
+    private InputAction mouseAutoMoveAction;
 
     private Transform cameraTransform;
 
@@ -31,22 +34,32 @@ public class PlayerController : MonoBehaviour
         moveAction = playerInput.actions["Movement"];
         jumpAction = playerInput.actions["Jump"];
         characterTurnAction = playerInput.actions["CharacterTurnToggle"]; 
+        mouseAutoMoveAction = playerInput.actions["DoubleMouseAutoMove"];
     }
 
-    void LateUpdate()
+    private void Update()
     {
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
             playerVelocity.y = 0f;
 
         int turnToggle = (int) characterTurnAction.ReadValue<float>();
+        int autoMoveToggle = (int) mouseAutoMoveAction.ReadValue<float>();
 
         // Moving with new input system
-        Vector2 movement = moveAction.ReadValue<Vector2>(); // Get value from action
-        Vector3 move = new Vector3(movement.x, 0f, movement.y);
+        Vector2 movement = moveAction.ReadValue<Vector2>();
 
+        // For moving forward with both mouse buttons pressed
+        if (autoMoveToggle == 1)
+            movement = new Vector2(0f, 1f);
+
+        Vector3 move = new Vector3(movement.x, 0f, movement.y);
+        
         if (turnToggle == 1) {
-            move = move.x * cameraTransform.right.normalized + move.z * cameraTransform.forward.normalized;
+            // Dont need y value of camera forward vector cos it slows down character
+            Vector3 camV = new Vector3(cameraTransform.forward.x, 0f, cameraTransform.forward.z);
+
+            move = move.x * cameraTransform.right.normalized + move.z * camV.normalized;
             move.y = 0;
         } else {
             move = move.x * transform.right.normalized + move.z * transform.forward.normalized;
@@ -66,7 +79,7 @@ public class PlayerController : MonoBehaviour
         if (turnToggle == 1) {
             float targetAngle = cameraTransform.eulerAngles.y;
             Quaternion rotation = Quaternion.Euler(0, targetAngle, 0);
-            transform.rotation = rotation; // May be better to just set rotation instead of lerping 
+            transform.rotation = rotation;
         }
     }
 
