@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         characterTurnAction = playerInput.actions["CharacterTurnToggle"]; 
     }
 
-    void Update()
+    void LateUpdate()
     {
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
