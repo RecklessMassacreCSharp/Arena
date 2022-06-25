@@ -38,13 +38,11 @@ public class PlayerController : MonoBehaviour
         cameraTransform = Camera.main.transform;
 
         // Get actions from player input component
-        jumpAction = playerInput.actions["Jump"];
-        jumpAction.performed += _ => OnJump();
-
         walkAction = playerInput.actions["WalkToggle"];
         walkAction.performed += _ => OnWalkToggle();
 
         moveAction = playerInput.actions["Movement"];
+        jumpAction = playerInput.actions["Jump"];
         characterTurnAction = playerInput.actions["CharacterTurnToggle"];
         mouseAutoMoveAction = playerInput.actions["DoubleMouseAutoMove"];
     }
@@ -96,6 +94,7 @@ public class PlayerController : MonoBehaviour
 
         controller.Move(moveSpeed * Time.deltaTime); // Move on x-z plane
 
+        Jump();
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime); // Move along y axis
     }
@@ -120,8 +119,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnJump() {
-        if (groundedPlayer) {
+    private void Jump( ) {
+        if (jumpAction.triggered && groundedPlayer) {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
             jumpForwardSpeed = move * speed; // For retaining speed and direction when jumping
             hasJumped = true;
