@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4448803449191688730, guid: d70eb13f67928ad4c8b88c869a5b55a7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.4114717
+      value: 1.3858675
       objectReference: {fileID: 0}
     - target: {fileID: 4448803449191688730, guid: d70eb13f67928ad4c8b88c869a5b55a7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -618,7 +618,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.24953501, y: 0, z: 0, w: 0.9683658}
-  m_LocalPosition: {x: 1.4114717, y: 3.206019, z: -1.5484115}
+  m_LocalPosition: {x: 1.3858675, y: 3.206019, z: -1.5484115}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -871,8 +871,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8edf703f4d5945e428b23a60b54419b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 4
-  jumpHeight: 2
+  runningSpeed: 4
+  walkingSpeed: 1
+  jumpHeight: 1
   gravityValue: -9.81
 --- !u!143 &1443006573
 CharacterController:
@@ -905,7 +906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 3c201725980bc24488f8ef8b7a92d595, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -916,7 +917,35 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fed5c6f7-fc74-4b04-ae07-f428ac9d6d01
+    m_ActionName: Player/MouseLook[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e80dc728-da39-4446-986a-f6c452d8af37
+    m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fc6d21e7-ee44-4e1c-81bf-a79342b8c584
+    m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7cd6a6fc-9c7c-4ebd-97bd-2b958a0ec1af
+    m_ActionName: Player/MouseLookToggle[/Mouse/rightButton,/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 14280dc0-aef8-46cc-83e0-a57a0c45e1bf
+    m_ActionName: Player/CharacterTurnToggle[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0ba69c91-d417-46a9-bacb-73ab9aada2a6
+    m_ActionName: Player/DoubleMouseAutoMove[/Mouse/leftButton,/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 20ce0636-442e-4143-a54b-9001a70da037
+    m_ActionName: Player/WalkToggle[/Keyboard/x]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -955,7 +984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4421898099045554502, guid: ba046fec32508904f8e1b2431de1705e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.4114717
+      value: 1.3858675
       objectReference: {fileID: 0}
     - target: {fileID: 4421898099045554502, guid: ba046fec32508904f8e1b2431de1705e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1032,10 +1061,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
+  m_Radius: 0.5440458
+  m_Height: 1.9989419
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.000000059604645, y: -0.0005290508, z: 0.044045568}
 --- !u!23 &1602500394
 MeshRenderer:
   m_ObjectHideFlags: 0

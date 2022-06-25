@@ -36,5 +36,4 @@ public class SwitchVCam : MonoBehaviour
     private void StopDynamicCam() {
         vcam2.Priority -= priorityBoost;
     }
-
 }
