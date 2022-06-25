@@ -105,27 +105,23 @@ public class PlayerController : MonoBehaviour
         transform.rotation = rotation;
     }
 
-    private void OnWalkToggle() {
-        switch (isRunning)
-        {
-            case true:
-                speed = walkingSpeed;
-                isRunning = false;
-                break;
-            case false:
-                speed = runningSpeed;
-                isRunning = true;
-                break;
-        }
-    }
-
-    private void Jump( ) {
+    private void Jump() {
         if (jumpAction.triggered && groundedPlayer) {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
             jumpForwardSpeed = move * speed; // For retaining speed and direction when jumping
             hasJumped = true;
         }
-    }   
+    }  
+
+    private void OnWalkToggle() {
+        if (isRunning) {
+            speed = walkingSpeed;
+            isRunning = false;
+        } else {
+            speed = runningSpeed;
+            isRunning = true;
+        }
+    } 
     
     /*
     Vector3 camV = new Vector3(cameraTransform.forward.x, 0f, cameraTransform.forward.z);
