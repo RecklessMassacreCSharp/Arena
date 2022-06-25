@@ -7,8 +7,6 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
 {
-    // TODO
-    // Think how to eliminate camera shaking when spamming RMB/LMB
     [SerializeField] private float runningSpeed = 3.0f;
     [SerializeField] private float walkingSpeed = 1.0f;
     [SerializeField] private float jumpHeight = 1.0f;
