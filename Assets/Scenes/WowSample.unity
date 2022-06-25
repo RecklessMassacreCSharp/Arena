@@ -138,6 +138,18 @@ PrefabInstance:
       propertyPath: XYAxis
       value: 
       objectReference: {fileID: -7686011143284913598, guid: 3c201725980bc24488f8ef8b7a92d595, type: 3}
+    - target: {fileID: 4448803448985621428, guid: d70eb13f67928ad4c8b88c869a5b55a7, type: 3}
+      propertyPath: m_XDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4448803448985621428, guid: d70eb13f67928ad4c8b88c869a5b55a7, type: 3}
+      propertyPath: m_YDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4448803448985621428, guid: d70eb13f67928ad4c8b88c869a5b55a7, type: 3}
+      propertyPath: m_ZDamping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4448803449191688728, guid: d70eb13f67928ad4c8b88c869a5b55a7, type: 3}
       propertyPath: m_Name
       value: StaticCamera
@@ -194,7 +206,8 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 1443006571}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4448803448985621430, guid: d70eb13f67928ad4c8b88c869a5b55a7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d70eb13f67928ad4c8b88c869a5b55a7, type: 3}
 --- !u!1 &366384577
 GameObject:
@@ -966,6 +979,22 @@ PrefabInstance:
       propertyPath: XYAxis
       value: 
       objectReference: {fileID: -7686011143284913598, guid: 3c201725980bc24488f8ef8b7a92d595, type: 3}
+    - target: {fileID: 4421898098840543464, guid: ba046fec32508904f8e1b2431de1705e, type: 3}
+      propertyPath: m_XDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421898098840543464, guid: ba046fec32508904f8e1b2431de1705e, type: 3}
+      propertyPath: m_YDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421898098840543464, guid: ba046fec32508904f8e1b2431de1705e, type: 3}
+      propertyPath: m_ZDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421898098840543464, guid: ba046fec32508904f8e1b2431de1705e, type: 3}
+      propertyPath: m_CenterOnActivate
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4421898098840543465, guid: ba046fec32508904f8e1b2431de1705e, type: 3}
       propertyPath: m_VerticalAxis.m_MaxSpeed
       value: 0.2
@@ -1030,7 +1059,8 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 1443006571}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4421898098840543466, guid: ba046fec32508904f8e1b2431de1705e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ba046fec32508904f8e1b2431de1705e, type: 3}
 --- !u!1 &1602500392
 GameObject:

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
 {
@@ -12,16 +13,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float walkingSpeed = 1.0f;
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
-    
-    private bool isRunning = true;
-    private float speed;
+
     private PlayerInput playerInput;
     private CharacterController controller;
-    private Vector3 playerVelocity;
+
+    private bool isRunning = true;
     private bool groundedPlayer;
     private bool hasJumped = false; // To distinguish causes of falling
+    private float speed;
     private Vector3 jumpForwardSpeed;
     private Vector3 move;
+    private Vector3 playerVelocity;
 
     private InputAction moveAction;
     private InputAction jumpAction; 
