@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
+    private Vector3 jumpForward;
 
     private InputAction moveAction;
     private InputAction jumpAction; 
@@ -46,7 +47,6 @@ public class PlayerController : MonoBehaviour
         int turnToggle = (int) characterTurnAction.ReadValue<float>();
         int autoMoveToggle = (int) mouseAutoMoveAction.ReadValue<float>();
 
-        // Moving with new input system
         Vector2 movement = moveAction.ReadValue<Vector2>();
 
         // For moving forward with both mouse buttons pressed
@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviour
         if (turnToggle == 1) {
             // Dont need y value of camera forward vector cos it slows down character
             Vector3 camV = new Vector3(cameraTransform.forward.x, 0f, cameraTransform.forward.z);
-
             move = move.x * cameraTransform.right.normalized + move.z * camV.normalized;
             move.y = 0;
         } else {
@@ -66,11 +65,17 @@ public class PlayerController : MonoBehaviour
             move.y = 0;
         }
         
+        // For retaining speed and direction when jumping
+        if (!groundedPlayer)
+            move = jumpForward;
+
         controller.Move(move * Time.deltaTime * playerSpeed);
 
         // Changes the height position of the player
-        if (jumpAction.triggered && groundedPlayer)
+        if (jumpAction.triggered && groundedPlayer) {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+            jumpForward = move;
+        }
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
