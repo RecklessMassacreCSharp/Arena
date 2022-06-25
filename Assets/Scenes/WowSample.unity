@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4448803449191688730, guid: d70eb13f67928ad4c8b88c869a5b55a7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.368547
+      value: 1.4114717
       objectReference: {fileID: 0}
     - target: {fileID: 4448803449191688730, guid: d70eb13f67928ad4c8b88c869a5b55a7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -618,7 +618,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.24953501, y: 0, z: 0, w: 0.9683658}
-  m_LocalPosition: {x: 1.368547, y: 3.206019, z: -1.5484115}
+  m_LocalPosition: {x: 1.4114717, y: 3.206019, z: -1.5484115}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -937,6 +937,14 @@ PrefabInstance:
       propertyPath: XYAxis
       value: 
       objectReference: {fileID: -7686011143284913598, guid: 3c201725980bc24488f8ef8b7a92d595, type: 3}
+    - target: {fileID: 4421898098840543465, guid: ba046fec32508904f8e1b2431de1705e, type: 3}
+      propertyPath: m_VerticalAxis.m_MaxSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421898098840543465, guid: ba046fec32508904f8e1b2431de1705e, type: 3}
+      propertyPath: m_HorizontalAxis.m_MaxSpeed
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 4421898099045554500, guid: ba046fec32508904f8e1b2431de1705e, type: 3}
       propertyPath: m_Name
       value: DynamicCamera
@@ -947,7 +955,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4421898099045554502, guid: ba046fec32508904f8e1b2431de1705e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.368547
+      value: 1.4114717
       objectReference: {fileID: 0}
     - target: {fileID: 4421898099045554502, guid: ba046fec32508904f8e1b2431de1705e, type: 3}
       propertyPath: m_LocalPosition.y

@@ -6,8 +6,6 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
 {
-    // TODO 
-    // fix jumping problem with moving when in air
     [SerializeField] private float playerSpeed = 2.0f;
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
@@ -16,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
+    private bool hasJumped = false; // To distinguish causes of falling
     private Vector3 jumpForward;
 
     private InputAction moveAction;
@@ -44,6 +43,9 @@ public class PlayerController : MonoBehaviour
         if (groundedPlayer && playerVelocity.y < 0)
             playerVelocity.y = 0f;
 
+        if (groundedPlayer)
+            hasJumped = false;
+
         int turnToggle = (int) characterTurnAction.ReadValue<float>();
         int autoMoveToggle = (int) mouseAutoMoveAction.ReadValue<float>();
 
@@ -66,7 +68,7 @@ public class PlayerController : MonoBehaviour
         }
         
         // For retaining speed and direction when jumping
-        if (!groundedPlayer)
+        if (!groundedPlayer && hasJumped)
             move = jumpForward;
 
         controller.Move(move * Time.deltaTime * playerSpeed);
@@ -75,6 +77,7 @@ public class PlayerController : MonoBehaviour
         if (jumpAction.triggered && groundedPlayer) {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
             jumpForward = move;
+            hasJumped = true;
         }
 
         playerVelocity.y += gravityValue * Time.deltaTime;
