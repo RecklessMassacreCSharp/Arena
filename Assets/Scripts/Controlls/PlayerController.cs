@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float runningSpeed = 3.0f;
     [SerializeField] private float walkingSpeed = 1.0f;
-    [SerializeField] private float jumpHeight = 1.0f;
+    [SerializeField] private float jumpHeight = 1.5f;
     [SerializeField] private float gravityValue = -9.81f;
 
     private PlayerInput playerInput;
@@ -94,7 +94,9 @@ public class PlayerController : MonoBehaviour
 
         controller.Move(moveSpeed * Time.deltaTime); // Move on x-z plane
 
-        Jump();
+        if (jumpAction.triggered && groundedPlayer) 
+            Jump();
+
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime); // Move along y axis
     }
@@ -106,11 +108,9 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Jump() {
-        if (jumpAction.triggered && groundedPlayer) {
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-            jumpForwardSpeed = move * speed; // For retaining speed and direction when jumping
-            hasJumped = true;
-        }
+        playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+        jumpForwardSpeed = move * speed; // For retaining speed and direction when jumping
+        hasJumped = true;
     }  
 
     private void OnWalkToggle() {
@@ -122,7 +122,6 @@ public class PlayerController : MonoBehaviour
             isRunning = true;
         }
     } 
-    
     /*
     Vector3 camV = new Vector3(cameraTransform.forward.x, 0f, cameraTransform.forward.z);
     Debug.Log($"cameraTransform = {cameraTransform.forward}");
