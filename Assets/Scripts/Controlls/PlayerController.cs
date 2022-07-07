@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     private InputAction walkAction;
 
     private Transform cameraTransform;
-    
+
     private void Awake() 
     {
         controller = GetComponent<CharacterController>();
@@ -56,11 +56,17 @@ public class PlayerController : MonoBehaviour
     {
         int turnToggle = (int) characterTurnAction.ReadValue<float>();
         int autoMoveToggle = (int) mouseAutoMoveAction.ReadValue<float>(); 
-        MovePlayer(autoMoveToggle ,turnToggle);
+        MovePlayer(autoMoveToggle, turnToggle);
 
         // Rotate player towards camera direction if RMB
         if (turnToggle == 1)
             RotateQuick();
+
+        UIHandle();
+    }
+
+    private void UIHandle() {
+        
     }
 
     private void MovePlayer(int autoMoveToggle, int turnToggle) {
