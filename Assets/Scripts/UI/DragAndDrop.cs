@@ -9,7 +9,6 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     public bool movable = false;
 
     // For disablement camera movement when moving UI elements
-    public bool isHandlingUI = false;
     [Tooltip("dynamic")] [SerializeField] private CinemachineVirtualCamera vcam;
 
     private RectTransform draggingObjectRectTransform;
@@ -19,8 +18,7 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         draggingObjectRectTransform = transform as RectTransform;
     }
 
-    public void OnDrag(PointerEventData eventData)
-    {   
+    public void OnDrag(PointerEventData eventData) {   
         if (movable)
             if (RectTransformUtility.ScreenPointToWorldPointInRectangle(draggingObjectRectTransform,
                 eventData.position, eventData.pressEventCamera, out Vector3 globalMousePosition))
@@ -28,14 +26,16 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
                     globalMousePosition, ref velocity, dampingSpeed);            
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
-    {
+    public void OnBeginDrag(PointerEventData eventData) {
         if (movable)
             vcam.gameObject.SetActive(false);
     }
 
-    public void OnEndDrag(PointerEventData eventData)
-    {
+    public void OnEndDrag(PointerEventData eventData) {
         vcam.gameObject.SetActive(true);
+    }
+
+    public void ChangeMovability() {
+        movable = !movable; 
     }
 }

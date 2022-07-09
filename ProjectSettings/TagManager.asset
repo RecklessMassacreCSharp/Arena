@@ -6,7 +6,8 @@ TagManager:
   tags:
   - StaticCamera
   - DynamicCamera
-  - HPMenu
+  - Interactable
+  - Menu
   layers:
   - Default
   - TransparentFX
